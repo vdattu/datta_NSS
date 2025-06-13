@@ -179,14 +179,47 @@ Entry at Classes VI and IX is through the All India Sainik Schools Entrance Exam
 
     <!-- Contact Section -->
     <section id="contact" class="container">
-      <h2 class="section-title">Contact Us</h2>
-      <form action="#" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
+        <h2 class="section-title">Contact Us</h2>
+        <!-- give the form an ID so we can hook into it easily -->
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+
+      <script>
+        (function() {
+          const form = document.getElementById('contact-form');
+          // replace with your WhatsApp number in international format, no plus-sign or dashes
+          const whatsappNumber = '919347832505'; 
+
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();  // stop the normal POST
+
+            const name    = form.elements['name'].value.trim();
+            const email   = form.elements['email'].value.trim();
+            const message = form.elements['message'].value.trim();
+
+            // build the text payload
+            const textLines = [
+              `*New contact form submission*`,
+              `Name: ${name}`,
+              `Email: ${email}`,
+              `Message: ${message}`
+            ];
+            const encodedText = encodeURIComponent(textLines.join('\n'));
+
+            // construct the wa.me link
+            const waLink = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+            // open in new tab (or you can use window.location.href = waLink to redirect same tab)
+            window.open(waLink, '_blank');
+          });
+        })();
+      </script>
+
 
         <footer>
             <div class="footer-container">
@@ -218,4 +251,3 @@ Entry at Classes VI and IX is through the All India Sainik Schools Entrance Exam
     </script>
 </body>
 </html>
-
