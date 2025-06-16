@@ -100,6 +100,8 @@
         <h1 style="color: blue;">Welcome to Netaji Sainik School KethanaKonda</h1>
         <h2 style="color: blue;">Managed by Netaji Sainik School Society Kethanakonda. Approved by Defence.</h2>
         <h3 style="color:blue;">Admissions Open for Academic Year 2025-26</h3>
+        <!-- <button style="color: red;"><a href="#contact">Enroll for Admissions</a></button> -->
+
       </div>
     </section>
 
@@ -178,9 +180,8 @@ Entry at Classes VI and IX is through the All India Sainik Schools Entrance Exam
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="container">
+    <!-- <section id="contact" class="container">
         <h2 class="section-title">Contact Us</h2>
-        <!-- give the form an ID so we can hook into it easily -->
         <form id="contact-form">
           <input type="text" name="name" placeholder="Your Name" required>
           <input type="email" name="email" placeholder="Your Email" required>
@@ -189,7 +190,7 @@ Entry at Classes VI and IX is through the All India Sainik Schools Entrance Exam
         </form>
       </section>
 
-      <script>
+      <script> 
         (function() {
           const form = document.getElementById('contact-form');
           // replace with your WhatsApp number in international format, no plus-sign or dashes
@@ -216,6 +217,180 @@ Entry at Classes VI and IX is through the All India Sainik Schools Entrance Exam
 
             // open in new tab (or you can use window.location.href = waLink to redirect same tab)
             window.open(waLink, '_blank');
+          });
+        })();
+      </script>-->
+      <section id="contact" class="container">
+  <h2 class="section-title">Contact Us</h2>
+  <form id="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <div style="display:flex; gap:10px; margin-top:10px;">
+      <button type="submit">Send Message</button>
+    </div>
+  </form>
+</section>
+
+    <script>
+      (function() {
+        const form = document.getElementById('contact-form');
+        const whatsappNumber = '919876543210';  // your WhatsApp number
+
+        // original contact-form submit → custom message
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const { name, email, message } = form.elements;
+          const text = [
+            `*New contact form submission*`,
+            `Name: ${name.value.trim()}`,
+            `Email: ${email.value.trim()}`,
+            `Message: ${message.value.trim()}`
+          ].join('\n');
+          const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+          window.open(waLink, '_blank');
+        });
+
+        // enroll button → enrollment request
+        document.getElementById('enroll-button').addEventListener('click', function() {
+          const name  = form.elements['name'].value.trim() || '[Your Name]';
+          const email = form.elements['email'].value.trim() || '[Your Email]';
+          const enrollText = [
+            `*Enrollment Request*`,
+            `I would like to enroll for admissions.`,
+            `Name: ${name}`,
+            `Email: ${email}`
+          ].join('\n');
+          const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(enrollText)}`;
+          window.open(waLink, '_blank');
+        });
+      })();
+    </script>
+    <!-- Fixed Enroll Button -->
+<button id="enroll-button-fixed">Enroll for Admissions</button>
+
+<!-- Modal Overlay -->
+<div id="enroll-modal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
+    <h3>Enrollment Form</h3>
+    <form id="enroll-form">
+      <input type="text"   name="name"        placeholder="Your Name"       required>
+      <input type="number" name="age"         placeholder="Your Age"        required>
+      <input type="text"   name="fatherName"  placeholder="Father's Name"    required>
+      <input type="text"   name="motherName"  placeholder="Mother's Name"    required>
+      <input type="text"   name="city"        placeholder="City"             required>
+      <input type="text"   name="state"       placeholder="State"            required>
+      <button type="submit">Send Enrollment</button>
+    </form>
+  </div>
+</div>
+
+      <style>
+        /* Fixed red button */
+        #enroll-button-fixed {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #e53935;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          padding: 12px 16px;
+          font-size: 1rem;
+          cursor: pointer;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+          z-index: 1000;
+        }
+        /* Modal backdrop */
+        .modal-overlay {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.5);
+          align-items: center;
+          justify-content: center;
+          z-index: 1001;
+        }
+        /* Modal box */
+        .modal-content {
+          background: #fff;
+          padding: 20px;
+          width: 90%;
+          max-width: 400px;
+          border-radius: 6px;
+          position: relative;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        /* Close “×” */
+        .modal-close {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          background: transparent;
+          border: none;
+          font-size: 1.4rem;
+          cursor: pointer;
+        }
+        /* Form inputs */
+        #enroll-form input {
+          width: 100%;
+          margin: 8px 0;
+          padding: 8px;
+          font-size: 1rem;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        #enroll-form button {
+          margin-top: 12px;
+          width: 100%;
+          padding: 10px;
+          font-size: 1rem;
+          background: #25D366;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+      </style>
+
+      <script>
+        (function() {
+          const whatsappNumber = '919876543210'; // your number
+          const fixedBtn  = document.getElementById('enroll-button-fixed');
+          const modal     = document.getElementById('enroll-modal');
+          const closeBtn  = modal.querySelector('.modal-close');
+          const form      = document.getElementById('enroll-form');
+
+          // open modal
+          fixedBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+          });
+          // close modal
+          closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+          });
+          // submit form → WhatsApp
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            const lines = [
+              `*Enrollment Request*`,
+              `Name: ${data.get('name').trim()}`,
+              `Age: ${data.get('age').trim()}`,
+              `Father’s Name: ${data.get('fatherName').trim()}`,
+              `Mother’s Name: ${data.get('motherName').trim()}`,
+              `City: ${data.get('city').trim()}`,
+              `State: ${data.get('state').trim()}`
+            ];
+            const text = encodeURIComponent(lines.join('\n'));
+            window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+            modal.style.display = 'none';
+            form.reset();
+          });
+          // close if click outside content
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
           });
         })();
       </script>
