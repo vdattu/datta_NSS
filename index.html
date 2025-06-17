@@ -2,88 +2,128 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Netaji Sainik School Society Kethanakonda</title>
+
   <style>
-    /* Reset & Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f4f8; color: #333; line-height: 1.6; }
-    a { text-decoration: none; color: inherit; }
+    /* ---------- RESET & BASE ---------- */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',Tahoma,sans-serif;background:#f0f4f8;color:#333;line-height:1.6}
+    a{text-decoration:none;color:inherit}
 
-    /* Loader */
-    #loader { position: fixed; inset: 0; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 9999; }
-    .spinner { width: 50px; height: 50px; border: 5px solid #eee; border-top: 5px solid #00539C; border-radius: 50%; animation: spin 1s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    /* ---------- LOADER ---------- */
+    #loader{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999}
+    .spinner{width:50px;height:50px;border:5px solid #eee;border-top:5px solid #00539C;border-radius:50%;animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
 
-    /* Header & Nav */
-    header { background: linear-gradient(90deg, #00539C 0%, #0084FF 100%); color: #fff; position: sticky; top: 0; z-index: 100; }
-    .nav-container { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; padding: 15px; }
-    .logo { font-size: 1.75rem; font-weight: bold; letter-spacing: 1px; }
-    nav ul { display: flex; gap: 20px; }
-    nav a { padding: 8px 12px; border-radius: 4px; transition: background .3s; color: #fff; }
-    nav a:hover { background: rgba(255,255,255,0.2); }
+    /* ---------- HEADER & NAV ---------- */
+    header{background:linear-gradient(90deg,#00539C 0%,#0084FF 100%);color:#fff;position:sticky;top:0;z-index:100}
+    .nav-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:15px}
+    .logo{font-size:1.75rem;font-weight:bold;letter-spacing:1px;white-space:nowrap}
+    nav ul{display:flex;gap:20px}
+    nav a{padding:8px 12px;border-radius:4px;transition:background .3s;color:#fff}
+    nav a:hover{background:rgba(255,255,255,.2)}
+    /* hamburger (hidden on desktop) */
+    #nav-toggle{display:none;background:none;border:none;font-size:1.8rem;color:#fff;cursor:pointer}
 
-    /* Hero Section */
-    .hero { background: url('images/hostel.jpg') center/cover no-repeat; color: #fff; text-align: center; padding: 140px 20px; position: relative; }
-    .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
-    .hero-content { position: relative; max-width: 800px; margin: auto; }
-    .hero h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
-    .hero p { font-size: 1.3rem; margin-bottom: 25px; }
-    .btn { display: inline-block; background: linear-gradient(45deg, #FFA500, #FFD700); color: #00539C; padding: 14px 30px; font-weight: bold; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform .3s; }
-    .btn:hover { transform: translateY(-3px); background: linear-gradient(45deg, #FFD700, #FFA500); }
+    /* ---------- HERO ---------- */
+    .hero{background:url('images/hostel.jpg') center/cover no-repeat;color:#fff;text-align:center;padding:140px 20px;position:relative}
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.4)}
+    .hero-content{position:relative;max-width:800px;margin:auto}
+    .hero h1{font-size:3.5rem;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+    .hero h2{font-size:1.5rem;margin-bottom:6px;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+    .hero h3{font-size:1.3rem}
+    .btn{display:inline-block;background:linear-gradient(45deg,#FFA500,#FFD700);color:#00539C;padding:14px 30px;font-weight:bold;border-radius:30px;box-shadow:0 4px 12px rgba(0,0,0,.2);transition:transform .3s}
+    .btn:hover{transform:translateY(-3px);background:linear-gradient(45deg,#FFD700,#FFA500)}
 
-    /* Section Backgrounds */
-    #about { background: #E1F5FE; }
-    #facilities { background: #FFF3E0; }
-    #gallery { background: #E8F5E9; }
-    #contact { background: #F3E5F5; }
+    /* ---------- SECTIONS ---------- */
+    #about{background:#E1F5FE}
+    #facilities{background:#FFF3E0}
+    #gallery{background:#E8F5E9}
+    #contact{background:#F3E5F5}
+    .container{max-width:1200px;margin:auto;padding:60px 20px}
+    h2.section-title{text-align:center;margin-bottom:40px;font-size:2.2rem;color:#00539C;position:relative}
+    h2.section-title::after{content:'';display:block;width:60px;height:4px;background:#FFA500;margin:10px auto 0;border-radius:2px}
 
-    /* Container & Titles */
-    .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
-    h2.section-title { text-align: center; margin-bottom: 40px; font-size: 2.2rem; color: #00539C; position: relative; }
-    h2.section-title::after { content: ''; display: block; width: 60px; height: 4px; background: #FFA500; margin: 10px auto 0; border-radius: 2px; }
+    /* FEATURES / HIGHLIGHTS */
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
+    .feature-card{background:#fff;border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s;border-top:5px solid #00539C}
+    .feature-card:hover{transform:translateY(-8px);box-shadow:0 12px 24px rgba(0,0,0,.15)}
+    .feature-card img{width:100%;height:160px;object-fit:cover}
+    .card-content{padding:20px}
+    .card-content h3{margin-bottom:10px;font-size:1.3rem;color:#0084FF}
 
-    /* Features */
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 25px; }
-    .feature-card { background: #fff; border-radius: 12px; overflow: hidden; transition: transform .3s, box-shadow .3s; border-top: 5px solid #00539C; }
-    .feature-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
-    .feature-card img { width: 100%; height: 160px; object-fit: cover; }
-    .card-content { padding: 20px; }
-    .card-content h3 { margin-bottom: 10px; font-size: 1.3rem; color: #0084FF; }
+    /* GALLERY */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+    .gallery img{width:100%;display:block;border-radius:8px;transition:transform .3s}
+    .gallery img:hover{transform:scale(1.05)}
 
-    /* Gallery */
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 20px; }
-    .gallery img { width: 100%; display: block; border-radius: 8px; transition: transform .3s; }
-    .gallery img:hover { transform: scale(1.05); }
+    /* CONTACT */
+    #contact form{display:grid;gap:18px;max-width:600px;margin:auto}
+    #contact input,#contact textarea{width:100%;padding:14px;border:2px solid #ccc;border-radius:6px;font-size:1rem;transition:border-color .3s}
+    #contact input:focus,#contact textarea:focus{border-color:#00539C;outline:none}
+    #contact button{width:fit-content;background:linear-gradient(45deg,#0084FF,#00539C);color:#fff;padding:14px 30px;border:none;border-radius:30px;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.2);transition:background .3s}
+    #contact button:hover{background:linear-gradient(45deg,#00539C,#0084FF)}
 
-    /* Contact Form */
-    #contact form { display: grid; gap: 18px; max-width: 600px; margin: auto; }
-    #contact input, #contact textarea { width: 100%; padding: 14px; border: 2px solid #ccc; border-radius: 6px; font-size: 1rem; transition: border-color .3s; }
-    #contact input:focus, #contact textarea:focus { border-color: #00539C; outline: none; }
-    #contact button { width: fit-content; background: linear-gradient(45deg,#0084FF,#00539C); color: #fff; padding: 14px 30px; border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,0.2); transition: background .3s; }
-    #contact button:hover { background: linear-gradient(45deg,#00539C,#0084FF); }
+    /* ---------- FOOTER ---------- */
+    footer{background:#181B23;padding:40px 20px;border-top:6px solid #1D2B1E}
+    .footer-container{max-width:1200px;margin:auto;display:flex;flex-wrap:wrap;gap:40px}
+    .footer-col{flex:1;min-width:200px}
+    .footer-col h4{margin-bottom:15px;color:#fff;position:relative;padding-bottom:8px}
+    .footer-col h4::after{content:'';position:absolute;left:0;bottom:0;width:40px;height:4px;background:#FFA500;border-radius:2px}
+    .footer-col ul{list-style:none}
+    .footer-col ul li{margin-bottom:8px;font-size:.95rem;color:#ccc}
+    .footer-col ul li a{color:#ccc}
 
-    /* Footer */
-    footer { background: #181B23; padding: 40px 20px; border-top: 6px solid #1D2B1E; }
-    .footer-container { max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; gap: 40px; }
-    .footer-col { flex: 1; min-width: 200px; }
-    .footer-col h4 { margin-bottom: 15px; color: #fff; position: relative; padding-bottom: 8px; }
-    .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 4px; background: #FFA500; border-radius: 2px; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 8px; font-size: 0.95rem; color: #ccc; }
-    .footer-col ul li a { color: #ccc; }
+    /* ---------- ENROLL FIXED BUTTON ---------- */
+    #enroll-button-fixed{position:fixed;bottom:20px;right:20px;background:#e53935;color:#fff;border:none;border-radius:4px;padding:12px 16px;font-size:1rem;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.2);z-index:1000}
+
+    /* ---------- MODAL ---------- */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;z-index:1001}
+    .modal-content{background:#fff;padding:20px;width:90%;max-width:450px;border-radius:6px;position:relative;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+    .modal-close{position:absolute;top:8px;right:8px;background:transparent;border:none;font-size:1.4rem;cursor:pointer}
+    #enroll-form input,#enroll-form select{width:100%;margin:8px 0;padding:8px;font-size:1rem;border:1px solid #ccc;border-radius:4px}
+    #enroll-form button{margin-top:12px;width:100%;padding:10px;font-size:1rem;background:#25D366;color:#fff;border:none;border-radius:4px;cursor:pointer}
+
+    /* ---------- MOBILE (≤600 px) ---------- */
+    @media (max-width:600px){
+      #nav-toggle{display:block}
+      nav{position:absolute;top:100%;left:0;width:100%;background:#00539C;display:none}
+      nav.open{display:block}
+      nav ul{flex-direction:column;padding:10px 0;gap:0}
+      nav a{display:block;padding:12px}
+      .logo{font-size:1.35rem;max-width:70%}
+
+      .hero{padding:100px 15px}
+      .hero h1{font-size:2.3rem}
+      .hero h2{font-size:1.1rem}
+      .hero h3{font-size:1rem}
+
+      .container{padding:40px 15px}
+      .features,.gallery{grid-template-columns:1fr}
+
+      #enroll-button-fixed{bottom:15px;right:15px;padding:10px 14px;font-size:.9rem}
+      .modal-content{max-width:none;width:90%}
+    }
   </style>
 </head>
+
 <body>
+  <!-- ===== LOADER ===== -->
   <div id="loader"><div class="spinner"></div></div>
-  <div id="main-content" style="display:none;">
-    <!-- Header & Nav -->
+
+  <!-- ===== MAIN ===== -->
+  <div id="main-content" style="display:none">
+
+    <!-- ===== HEADER & NAV ===== -->
     <header>
       <div class="nav-container">
-        <div class="logo">Netaji Sainik School Kethanakonda Official Website</div>
+        <div class="logo">Netaji Sainik School Kethanakonda</div>
+
+        <button id="nav-toggle" aria-label="menu">&#9776;</button>
+
         <nav>
           <ul>
-            <!-- <li><a href="#">Home</a></li> -->
             <li><a href="#about">About</a></li>
             <li><a href="#facilities">Highlights</a></li>
             <li><a href="#gallery">Gallery</a></li>
@@ -93,45 +133,47 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ===== HERO ===== -->
     <section class="hero">
       <div class="hero-content">
-        <h1 style="color:red;">Official Website</h1>
-        <h1 style="color: blue;">Welcome to Netaji Sainik School KethanaKonda</h1>
-        <h2 style="color: blue;">Managed by Netaji Sainik School Society Kethanakonda. Approved by Defence.</h2>
-        <h3 style="color:blue;">Admissions Open for Academic Year 2025-26</h3>
-        <!-- <button style="color: red;"><a href="#contact">Enroll for Admissions</a></button> -->
-
+        <h2 style="color:red">Official Website</h2>
+        <h1 style="color:blue">Welcome to Netaji Sainik School Kethanakonda</h1>
+        <h2 style="color:blue">Managed by Netaji Sainik School Society Kethanakonda. Approved by Defence.</h2>
+        <h3 style="color:blue">Admissions Open for Academic Year 2025-26</h3>
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ===== ABOUT ===== -->
     <section id="about" class="container">
       <h2 class="section-title">About Us</h2>
-      <p style="max-width:800px;margin:auto;text-align:center;">About Netaji Sainik School, Kethanakonda
-Netaji Sainik School, Kethanakonda is a premier residential institution established to prepare young boys and girls for leadership roles in the Armed Forces and civilian life. Set in a tranquil campus on the outskirts of Kethanakonda, it blends a rigorous academic curriculum with robust physical training and character-building activities.</p>
-
-<p style="max-width:800px;margin:auto;text-align:center;">Affiliation & Recognition:
-1.Recognized by the Government of Andhra Pradesh
-2.Proudly recognized by the Government of Andhra Pradesh, ensuring compliance with state educational standards and a commitment to quality education.</p>
-
-<p style="max-width:800px;margin:auto;text-align:center;">Our Mission:
-To instill discipline, courage, and a spirit of service, equipping cadets with the academic excellence and leadership skills needed for the National Defence Academy and beyond.
-● Integrity,● Duty,● Excellence,● Patriotism</p>
-
-<p style="max-width:800px;margin:auto;text-align:center;">Key Facilities:
-1.Modern classrooms with smart-board teaching
-2.Well-equipped science and computer labs
-3.Extensive sports grounds (Rifle Shooting,Horse riding,Football, Hockey, Athletics)
-4.NCC and Scouts & Guides programs
-5.Rifle Shooting Safe, professionally managed shooting practice to build focus and precision.
-6.Horse riding under expert supervision
-
-Admissions:
-Entry at Classes VI and IX is through the All India Sainik Schools Entrance Examination (AISSEE).</p>
+      <p style="max-width:800px;margin:auto;text-align:center">
+        <strong>Netaji Sainik School, Kethanakonda</strong> is a premier residential institution established to prepare young boys and girls for leadership roles in the Armed Forces and civilian life. Set in a tranquil campus on the outskirts of Kethanakonda, it blends a rigorous academic curriculum with robust physical training and character-building activities.
+      </p><br>
+      <p style="max-width:800px;margin:auto;text-align:center">
+        <strong>Affiliation &amp; Recognition:</strong><br>
+        1. Recognized by the Government of Andhra Pradesh<br>
+        2. Proudly recognized by the Government of Andhra Pradesh, ensuring compliance with state educational standards and a commitment to quality education.
+      </p><br>
+      <p style="max-width:800px;margin:auto;text-align:center">
+        <strong>Our Mission:</strong><br>
+        To instill discipline, courage, and a spirit of service, equipping cadets with the academic excellence and leadership skills needed for the National Defence Academy and beyond.<br>
+        • Integrity&nbsp;&nbsp;• Duty&nbsp;&nbsp;• Excellence&nbsp;&nbsp;• Patriotism
+      </p><br>
+      <p style="max-width:800px;margin:auto;text-align:center">
+        <strong>Key Facilities:</strong><br>
+        1. Modern classrooms with smart-board teaching<br>
+        2. Well-equipped science and computer labs<br>
+        3. Extensive sports grounds (Rifle Shooting, Horse Riding, Football, Hockey, Athletics)<br>
+        4. NCC and Scouts &amp; Guides programs<br>
+        5. Rifle Shooting range, professionally managed practice to build focus and precision<br>
+        6. Horse Riding under expert supervision
+      </p><br>
+      <p style="max-width:800px;margin:auto;text-align:center">
+        <strong>Admissions:</strong> Entry to Nursery to IX Class is through the All India Sainik Schools Entrance Examination (AISSEE).
+      </p>
     </section>
 
-    <!-- Facilities Section -->
+    <!-- ===== HIGHLIGHTS / FEATURES ===== -->
     <section id="facilities" class="container">
       <h2 class="section-title">Our Highlights</h2>
       <div class="features">
@@ -142,6 +184,7 @@ Entry at Classes VI and IX is through the All India Sainik Schools Entrance Exam
             <p>Comfortable, secure accommodation with 24/7 support.</p>
           </div>
         </div>
+
         <div class="feature-card">
           <img src="images/drill.jpg" alt="Cadet Parade">
           <div class="card-content">
@@ -149,6 +192,7 @@ Entry at Classes VI and IX is through the All India Sainik Schools Entrance Exam
             <p>Daily parade showcasing discipline and unity.</p>
           </div>
         </div>
+
         <div class="feature-card">
           <img src="images/cadets.jpg" alt="Girl Cadets">
           <div class="card-content">
@@ -156,8 +200,9 @@ Entry at Classes VI and IX is through the All India Sainik Schools Entrance Exam
             <p>An inclusive environment with dedicated programs for all.</p>
           </div>
         </div>
+
         <div class="feature-card">
-          <img src="images/hero.jpg" alt="Campus View">
+          <img src="images/hero.jpg" alt="Scenic Campus">
           <div class="card-content">
             <h3>Scenic Campus</h3>
             <p>A sprawling green campus that inspires growth.</p>
@@ -166,263 +211,149 @@ Entry at Classes VI and IX is through the All India Sainik Schools Entrance Exam
       </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- ===== GALLERY ===== -->
     <section id="gallery" class="container">
       <h2 class="section-title">Campus Gallery</h2>
       <div class="gallery">
-        <img src="images/hero.jpg" alt="Campus Building">
+        <img src="images/hero.jpg"  alt="Campus Building">
         <img src="images/hostel.jpg" alt="Hostel Exterior">
-        <img src="images/drill.jpg" alt="Parade Drill">
+        <img src="images/drill.jpg"  alt="Parade Drill">
         <img src="images/cadets.jpg" alt="Girl Cadets">
-        <img src="images/hero1.png" alt="boys">
-
+        <img src="images/hero1.png" alt="Boys Group">
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <!-- <section id="contact" class="container">
-        <h2 class="section-title">Contact Us</h2>
-        <form id="contact-form">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <form id="contact-form">
+        <input name="name"  placeholder="Your Name"  required>
+        <input name="email" type="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <!-- ===== ENROLL BUTTON + MODAL ===== -->
+    <button id="enroll-button-fixed">Enroll for Admissions</button>
+
+    <div id="enroll-modal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h3>Enrollment Form</h3>
+        <form id="enroll-form">
+          <input name="studentName" placeholder="Student Name" required>
+          <select name="gender" required>
+            <option value="" disabled selected>Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+          <input name="fatherName"  placeholder="Father's Name" required>
+          <input name="motherName"  placeholder="Mother's Name" required>
+          <input name="email" type="email" placeholder="Email Address" required>
+          <input name="phoneNumber" type="tel" placeholder="Phone Number" required>
+          <label style="font-size:.9rem">Date of Birth</label>
+          <input name="dateOfBirth" type="date" required>
+          <input name="admissionClass" placeholder="Admission For Class" required>
+          <input name="address"  placeholder="Address" required>
+          <input name="city"     placeholder="City" required>
+          <input name="state"    placeholder="State" required>
+          <input name="country"  placeholder="Country" required>
+          <button type="submit">Send Enrollment</button>
         </form>
-      </section>
-
-      <script> 
-        (function() {
-          const form = document.getElementById('contact-form');
-          // replace with your WhatsApp number in international format, no plus-sign or dashes
-          const whatsappNumber = '919347832505'; 
-
-          form.addEventListener('submit', function(e) {
-            e.preventDefault();  // stop the normal POST
-
-            const name    = form.elements['name'].value.trim();
-            const email   = form.elements['email'].value.trim();
-            const message = form.elements['message'].value.trim();
-
-            // build the text payload
-            const textLines = [
-              `*New contact form submission*`,
-              `Name: ${name}`,
-              `Email: ${email}`,
-              `Message: ${message}`
-            ];
-            const encodedText = encodeURIComponent(textLines.join('\n'));
-
-            // construct the wa.me link
-            const waLink = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
-
-            // open in new tab (or you can use window.location.href = waLink to redirect same tab)
-            window.open(waLink, '_blank');
-          });
-        })();
-      </script>-->
-      <section id="contact" class="container">
-  <h2 class="section-title">Contact Us</h2>
-  <form id="contact-form">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-    <div style="display:flex; gap:10px; margin-top:10px;">
-      <button type="submit">Send Message</button>
+      </div>
     </div>
-  </form>
-</section>
 
-    <script>
-      (function() {
-        const form = document.getElementById('contact-form');
-        const whatsappNumber = '919876543210';  // your WhatsApp number
-
-        // original contact-form submit → custom message
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          const { name, email, message } = form.elements;
-          const text = [
-            `*New contact form submission*`,
-            `Name: ${name.value.trim()}`,
-            `Email: ${email.value.trim()}`,
-            `Message: ${message.value.trim()}`
-          ].join('\n');
-          const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-          window.open(waLink, '_blank');
-        });
-
-        // enroll button → enrollment request
-        document.getElementById('enroll-button').addEventListener('click', function() {
-          const name  = form.elements['name'].value.trim() || '[Your Name]';
-          const email = form.elements['email'].value.trim() || '[Your Email]';
-          const enrollText = [
-            `*Enrollment Request*`,
-            `I would like to enroll for admissions.`,
-            `Name: ${name}`,
-            `Email: ${email}`
-          ].join('\n');
-          const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(enrollText)}`;
-          window.open(waLink, '_blank');
-        });
-      })();
-    </script>
-    <!-- Fixed Enroll Button -->
-<button id="enroll-button-fixed">Enroll for Admissions</button>
-
-<!-- Modal Overlay -->
-<div id="enroll-modal" class="modal-overlay">
-  <div class="modal-content">
-    <button class="modal-close">&times;</button>
-    <h3>Enrollment Form</h3>
-    <form id="enroll-form">
-      <input type="text"   name="name"        placeholder="Your Name"       required>
-      <input type="number" name="age"         placeholder="Your Age"        required>
-      <input type="text"   name="fatherName"  placeholder="Father's Name"    required>
-      <input type="text"   name="motherName"  placeholder="Mother's Name"    required>
-      <input type="text"   name="city"        placeholder="City"             required>
-      <input type="text"   name="state"       placeholder="State"            required>
-      <button type="submit">Send Enrollment</button>
-    </form>
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#facilities">Highlights</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <ul>
+            <li>Phone: +91-93478-32505</li>
+            <li>Email: president@netajisainikschool.org<br>secretary@netajisainikschool.org</li>
+            <li>Address: Kethanakonda, Andhra Pradesh, INDIA</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   </div>
-</div>
 
-      <style>
-        /* Fixed red button */
-        #enroll-button-fixed {
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          background: #e53935;
-          color: #fff;
-          border: none;
-          border-radius: 4px;
-          padding: 12px 16px;
-          font-size: 1rem;
-          cursor: pointer;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-          z-index: 1000;
-        }
-        /* Modal backdrop */
-        .modal-overlay {
-          display: none;
-          position: fixed;
-          inset: 0;
-          background: rgba(0,0,0,0.5);
-          align-items: center;
-          justify-content: center;
-          z-index: 1001;
-        }
-        /* Modal box */
-        .modal-content {
-          background: #fff;
-          padding: 20px;
-          width: 90%;
-          max-width: 400px;
-          border-radius: 6px;
-          position: relative;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        /* Close “×” */
-        .modal-close {
-          position: absolute;
-          top: 8px;
-          right: 8px;
-          background: transparent;
-          border: none;
-          font-size: 1.4rem;
-          cursor: pointer;
-        }
-        /* Form inputs */
-        #enroll-form input {
-          width: 100%;
-          margin: 8px 0;
-          padding: 8px;
-          font-size: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-        #enroll-form button {
-          margin-top: 12px;
-          width: 100%;
-          padding: 10px;
-          font-size: 1rem;
-          background: #25D366;
-          color: #fff;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-      </style>
+  <!-- ---------- SCRIPTS ---------- -->
+  <script>
+    /* remove loader on page load */
+    window.addEventListener('load',()=>{
+      document.getElementById('loader').style.display='none';
+      document.getElementById('main-content').style.display='block';
+    });
 
-      <script>
-        (function() {
-          const whatsappNumber = '919876543210'; // your number
-          const fixedBtn  = document.getElementById('enroll-button-fixed');
-          const modal     = document.getElementById('enroll-modal');
-          const closeBtn  = modal.querySelector('.modal-close');
-          const form      = document.getElementById('enroll-form');
+    /* mobile nav toggle */
+    document.getElementById('nav-toggle').addEventListener('click',()=>{
+      document.querySelector('header nav').classList.toggle('open');
+    });
 
-          // open modal
-          fixedBtn.addEventListener('click', () => {
-            modal.style.display = 'flex';
-          });
-          // close modal
-          closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-          });
-          // submit form → WhatsApp
-          form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const data = new FormData(form);
-            const lines = [
-              `*Enrollment Request*`,
-              `Name: ${data.get('name').trim()}`,
-              `Age: ${data.get('age').trim()}`,
-              `Father’s Name: ${data.get('fatherName').trim()}`,
-              `Mother’s Name: ${data.get('motherName').trim()}`,
-              `City: ${data.get('city').trim()}`,
-              `State: ${data.get('state').trim()}`
-            ];
-            const text = encodeURIComponent(lines.join('\n'));
-            window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
-            modal.style.display = 'none';
-            form.reset();
-          });
-          // close if click outside content
-          modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.style.display = 'none';
-          });
-        })();
-      </script>
+    /* CONTACT → WhatsApp */
+    (function(){
+      const whatsapp='919876543210';
+      const form=document.getElementById('contact-form');
+      form.addEventListener('submit',e=>{
+        e.preventDefault();
+        const {name,email,message}=form.elements;
+        const lines=[
+          '*New contact form submission*',
+          `Name: ${name.value.trim()}`,
+          `Email: ${email.value.trim()}`,
+          `Message: ${message.value.trim()}`
+        ];
+        window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(lines.join('\\n'))}`,'_blank');
+        form.reset();
+      });
+    })();
 
+    /* ENROLL MODAL + WhatsApp */
+    (function(){
+      const whatsapp='919876543210';
+      const openBtn=document.getElementById('enroll-button-fixed');
+      const modal=document.getElementById('enroll-modal');
+      const closeBtn=modal.querySelector('.modal-close');
+      const form=document.getElementById('enroll-form');
 
-        <footer>
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#facilities">Highlights</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Info</h4>
-                    <ul> 
-                        <li>Phone: +91-9347832505</li>
-                        <li>Email: president@netajisainikschool.org, secretary@netajisainikschool.org  </li>
-                        <li>Address: Kethanakonda, Andhra Pradesh, INDIA</li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    </div>
+      openBtn.onclick=()=>modal.style.display='flex';
+      closeBtn.onclick=()=>modal.style.display='none';
+      modal.onclick=e=>{if(e.target===modal)modal.style.display='none'};
 
-    <script>
-        window.addEventListener('load', () => {
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-        });
-    </script>
+      form.addEventListener('submit',e=>{
+        e.preventDefault();
+        const d=new FormData(form);
+        const out=[
+          '*Enrollment Request*',
+          `Student Name: ${d.get('studentName')}`,
+          `Gender: ${d.get('gender')}`,
+          `Father's Name: ${d.get('fatherName')}`,
+          `Mother's Name: ${d.get('motherName')}`,
+          `Email: ${d.get('email')}`,
+          `Phone: ${d.get('phoneNumber')}`,
+          `DOB: ${d.get('dateOfBirth')}`,
+          `Class: ${d.get('admissionClass')}`,
+          `Address: ${d.get('address')}`,
+          `City: ${d.get('city')}`,
+          `State: ${d.get('state')}`,
+          `Country: ${d.get('country')}`
+        ].join('\\n');
+        window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(out)}`,'_blank');
+        modal.style.display='none';
+        form.reset();
+      });
+    })();
+  </script>
 </body>
 </html>
